@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Eventku",
+  "name": "Eventku - Cari Event Favoritmu",
   "icons": [
     {
       "src": "favicon.ico",
