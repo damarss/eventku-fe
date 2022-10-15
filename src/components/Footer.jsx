@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-[#0A075F] text-white px-12 pt-14 pb-8">
-      <div className="grid md:grid-cols-12 sm:grid-cols-1 gap-4">
+      <div className="grid  md:grid-cols-12 sm:grid-cols-4 gap-4">
         <div className="col-span-4">
           <div className="-mt-2">
             <img
@@ -87,6 +87,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+
         <div className="col-span-4">
           <div className="">
             <h3 className="text-xl font-bold">Stay Updated</h3>
@@ -106,28 +107,28 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-full mt-12">
-          <hr className="" />
-          <div className="text-center mt-4">
-            <p className="text-sm">
-              Copyright &copy; 2021 Eventku. All rights reserved.
-            </p>
-            <p className="text-sm mt-3">
-              Created with{" "}
-              <span className="text-red-500">
-                <FaHeart className="inline" />
-              </span>{" "}
-              by{" "}
-              <a
-                className="text-cyan-500"
-                href="https://github.com/damarss"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Damar Septia Nugraha
-              </a>
-            </p>
-          </div>
+      </div>
+      <div className="grid-cols-4 mt-12">
+        <hr className="" />
+        <div className="text-center mt-4">
+          <p className="text-sm">
+            Copyright &copy; 2021 Eventku. All rights reserved.
+          </p>
+          <p className="text-sm mt-3">
+            Created with{" "}
+            <span className="text-red-500">
+              <FaHeart className="inline" />
+            </span>{" "}
+            by{" "}
+            <a
+              className="text-cyan-500"
+              href="https://github.com/damarss"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Damar Septia Nugraha
+            </a>
+          </p>
         </div>
       </div>
     </footer>
