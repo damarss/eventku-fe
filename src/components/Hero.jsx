@@ -1,8 +1,8 @@
 const Hero = () => {
   return (
-    <section className="hero">
+    <section className="hero -mt-20">
       <div className="hero-filter">
-        <div className="z-10 text-white">Haha</div>
+        <div className="text-white pt-24">Haha</div>
       </div>
     </section>
   );

@@ -18,13 +18,13 @@ const Footer = () => {
               lebih mudah dalam mencari event yang tersedia.
             </p>
             <div className="btn-group text-2xl mt-4">
-              <button className="bg-[#3B5998] p-2 rounded-full">
+              <button className="bg-[#3B5998] p-2 rounded-full transition duration-300 transform hover:-scale-x-100">
                 <FaFacebookF />
               </button>
-              <button className="bg-[#55ACEE] p-2 rounded-full ml-3">
+              <button className="bg-[#55ACEE] p-2 rounded-full transition duration-300 transform hover:-scale-x-100 ml-3">
                 <FaTwitter />
               </button>
-              <button className="bg-[#007AB9] p-2 rounded-full ml-3">
+              <button className="bg-[#007AB9] p-2 rounded-full transition duration-300 transform hover:-scale-x-100 ml-3">
                 <FaLinkedinIn />
               </button>
             </div>
@@ -92,7 +92,7 @@ const Footer = () => {
           <div className="">
             <h3 className="text-xl font-bold">Stay Updated</h3>
             <p className="text-sm mt-1">
-              Langganan ke email kami untuk mendapatkan informasi terbaru
+              Subscribe ke email kami untuk mendapatkan informasi terbaru
               mengenai event-event yang ada di Indonesia.
             </p>
             <div className="mt-6 relative">
@@ -111,9 +111,6 @@ const Footer = () => {
       <div className="grid-cols-4 mt-12">
         <hr className="" />
         <div className="text-center mt-4">
-          <p className="text-sm">
-            Copyright &copy; 2021 Eventku. All rights reserved.
-          </p>
           <p className="text-sm mt-3">
             Created with{" "}
             <span className="text-red-500">

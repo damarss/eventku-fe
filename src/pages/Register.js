@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "../api/axios";
-import Cookies from "universal-cookie";
 import { Link, useNavigate } from "react-router-dom";
-const cookies = new Cookies();
 
 const Register = () => {
   const [error, setError] = useState("");

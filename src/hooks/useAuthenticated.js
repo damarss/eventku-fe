@@ -12,6 +12,9 @@ export const useAuthenticated = () => {
   useEffect(() => {
     if (cookies.get("token")) {
       setAuthenticated(true);
+      setTimeout(() => {
+        location?.pathname === "/register" && navigate("/");
+      }, 500);
     } else {
       setAuthenticated(false);
       setTimeout(() => {

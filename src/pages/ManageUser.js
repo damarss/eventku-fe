@@ -8,8 +8,6 @@ const cookies = new Cookies();
 
 const ManageUser = () => {
   const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({});
-  const [isAdmin, setIsAdmin] = useState(false);
   const authorized = useAuthorized();
   const navigate = useNavigate();
 
@@ -19,26 +17,48 @@ const ManageUser = () => {
   };
 
   useEffect(() => {
-    cookies.get("user")?.role === "admin"
-      ? setIsAdmin(true)
-      : setIsAdmin(false);
+    const isAdmin = cookies.get("user")?.role === "admin";
+
     if (isAdmin) {
       getUsers();
     } else {
       navigate("/", { replace: true });
     }
-  }, [isAdmin, navigate]);
+  }, [navigate]);
 
   return (
-    <>
-      {users?.length > 0 &&
-        users.map((user) => (
-          <div key={user.id}>
-            <p>{user.name}</p>
-            <p>{user.email}</p>
-          </div>
-        ))}
-    </>
+    <div className="container mx-auto mt-5 px-4">
+      <h1 className="font-bold text-4xl text-center">Manage User</h1>
+      <table className="table-auto mx-auto">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+            <td>Malcolm Lockyer</td>
+            <td>1961</td>
+          </tr>
+          <tr>
+            <td>Witchy Woman</td>
+            <td>The Eagles</td>
+            <td>1972</td>
+          </tr>
+          <tr>
+            <td>Shining Star</td>
+            <td>Earth, Wind, and Fire</td>
+            <td>1975</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   );
 };
 
