@@ -4,5 +4,19 @@
 
 body {
     font-family: Poppins, sans-serif;
-    min-height: 100vh;
+}
+
+.hero {
+    background: url(components/hero.jpg) no-repeat center center/cover;
+}
+
+.hero, .hero-filter {
+    height: 720px;
+}
+
+.hero-filter {
+    /* background opacity */
+    background: linear-gradient(45deg, rgba(237, 70, 144, 0.8), rgba(85, 34, 204, 0.9));
+    /* opacity: 0.85; */
+
 }
