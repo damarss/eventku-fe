@@ -31,15 +31,6 @@ const Events = () => {
                 tanggal={"3"}
                 bulan={"DEC"}
               />
-              <EventCard
-                key={event.id}
-                id={event.id}
-                title={event.title}
-                description={event.description}
-                image={`http://localhost:8080/uploads/images/${event.image_url}`}
-                tanggal={"3"}
-                bulan={"DEC"}
-              />
             </>
           ))
         ) : (
