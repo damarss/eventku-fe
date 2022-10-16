@@ -40,7 +40,7 @@ const Login = () => {
         setError("");
       })
       .catch((error) => {
-        setError(error.response.data.messages.error);
+        setError(error.response?.data?.messages?.error ? error.response.data.messages.error : "Server error");
       });
   };
 
