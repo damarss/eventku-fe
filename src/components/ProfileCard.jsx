@@ -48,7 +48,7 @@ const ProfileCard = () => {
 
     if (logoutClicked) {
       setLogoutClicked(false);
-      navigate("/login", { state: { from: location?.pathname } });
+      navigate("/login", { state: { from: location?.pathname }, replace: true });
     }
   }, [location?.pathname, logoutClicked, navigate, showed]);
 

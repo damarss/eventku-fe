@@ -49,7 +49,7 @@ const Login = () => {
       setAuthenticated(true);
       setError("");
       setTimeout(() => {
-        navigate(from || "/");
+        navigate(from || "/", { replace: true });
       }, 1000);
     } else {
       setAuthenticated(false);

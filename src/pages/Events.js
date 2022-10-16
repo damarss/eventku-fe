@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
 import { axiosAuth } from "../api/axios";
 import EventCard from "../components/EventCard";
+import useAuthenticated from "../hooks/useAuthenticated";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
+  const authenticated = useAuthenticated();
 
   const getEvents = async () => {
     const res = await axiosAuth.get("event");
-    console.log(res.data);
     setEvents(res.data.events);
   };
 
   useEffect(() => {
-    getEvents();
-  }, []);
-  //   id, title, description, tanggal, bulan, image
+      getEvents();
+    }, []);
+    
   return (
     <div>
       <h1 className="font-bold text-center text-4xl mt-4">Events</h1>
       <div className="flex my-7 px-7 gap-5 flex-wrap mx-auto justify-center">
-        {events?.length > 0 ? (
+        {authenticated ? (
           events.map((event) => (
             <>
               <EventCard
@@ -28,8 +29,7 @@ const Events = () => {
                 title={event.title}
                 description={event.description}
                 image={`http://localhost:8080/uploads/images/${event.image_url}`}
-                tanggal={"3"}
-                bulan={"DEC"}
+                start={event.start}
               />
             </>
           ))

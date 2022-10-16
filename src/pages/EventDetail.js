@@ -6,20 +6,25 @@ import Navigation from "../components/Navigation";
 const EventDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [idEvent, setIdEvent] = useState(null);
   const [event, setEvent] = useState(null);
 
-  const getEvent = async () => {
-    const res = await axiosAuth.get(`event/${idEvent}`);
-    setEvent(res.data.event);
+  const getEvent = async (id) => {
+    const res = await axiosAuth.get(`event/${id}`);
+    setEvent(res.data);
   };
 
   useEffect(() => {
-    location?.state?.id ? setIdEvent(location.state.id) : navigate("/");
-    console.log("berhasil");
-    event && console.log(event);
-  }, [location.state.id]);
-  return <></>;
+    if (location.state.id) {
+      getEvent(location.state.id);
+    } else {
+      navigate("/");
+    }
+  }, [location.state.id, navigate]);
+  return <>
+    {
+      event && event.title
+    }
+  </>;
 };
 
 export default EventDetail;

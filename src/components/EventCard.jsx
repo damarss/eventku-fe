@@ -8,7 +8,10 @@ const EventCard = (props) => {
     navigate("/event", { state: { id: id } });
   };
 
-  const { id, title, description, tanggal, bulan, image } = props;
+  const { id, title, description, start, image } = props;
+  const date = new Date(start);
+  let newBulan = date.toLocaleString("default", { month: "short" }).toUpperCase();
+  let newTanggal = date.getDate();
 
   return (
     <div
@@ -19,7 +22,7 @@ const EventCard = (props) => {
         <img className="h-full w-full object-cover" src={image} alt={title} />
       </div>
       <div className="bg-white px-3 py-4 flex gap-4">
-        <Tanggal bulan={bulan} tanggal={tanggal} />
+        <Tanggal bulan={newBulan} tanggal={newTanggal} />
         <EVentDescription title={title} description={description} />
       </div>
     </div>
