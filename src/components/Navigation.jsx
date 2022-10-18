@@ -32,7 +32,7 @@ const Navigation = () => {
       nav.current.classList.remove("text-white");
       nav.current.classList.add("bg-white");
       loginBtn.current && loginBtn.current.classList.add("border-[#0A075F]");
-    } else if (scrollY <= 120 && location?.pathname === "/") {
+    } else if (scrollY <= 80 && location?.pathname === "/") {
       nav.current.classList.remove("bg-white");
       nav.current.classList.add("text-white");
       nav.current.classList.add("bg-transparent");

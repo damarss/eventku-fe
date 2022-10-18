@@ -14,14 +14,14 @@ const Profile = () => {
   }, []);
 
   return (
-    <>
+    <div className="min-h-screen">
       <h1>Profile</h1>
       {user && (
         <div>
           <p>{user.name}</p>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

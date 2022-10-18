@@ -13,13 +13,13 @@ const Events = () => {
   };
 
   useEffect(() => {
-      getEvents();
-    }, []);
-    
+    getEvents();
+  }, []);
+
   return (
-    <div>
+    <div className="min-h-screen">
       <h1 className="font-bold text-center text-4xl mt-4">Events</h1>
-      <div className="flex my-7 px-7 gap-5 flex-wrap mx-auto justify-center">
+      <div className="flex my-7 px-7 gap-7 flex-wrap mx-auto justify-center">
         {authenticated ? (
           events.map((event) => (
             <>
@@ -34,7 +34,7 @@ const Events = () => {
             </>
           ))
         ) : (
-          <div className="h-52">
+          <div className="">
             Silakan Login terlebih dahulu untuk melihat event!
           </div>
         )}

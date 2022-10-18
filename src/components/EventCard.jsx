@@ -15,7 +15,7 @@ const EventCard = (props) => {
 
   return (
     <div
-      className="rounded-3xl overflow-hidden w-80 cursor-pointer shadow-md"
+      className="rounded-3xl overflow-hidden w-80 cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500"
       onClick={() => redirectEvent(id)}
     >
       <div className="h-52 overflow-hidden">
