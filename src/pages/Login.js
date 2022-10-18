@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "../api/axios";
 import Cookies from "universal-cookie";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const cookies = new Cookies();
 
 const Login = () => {
@@ -9,7 +9,6 @@ const Login = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from || "/";
 
@@ -53,14 +52,14 @@ const Login = () => {
       setAuthenticated(true);
       setError("");
       setTimeout(() => {
-        window.location.reload();
-        navigate(from || "/", { replace: true });
+        window.location.href = from || "/";
+        // navigate(from || "/", { replace: true });
       }, 1000);
     } else {
       setAuthenticated(false);
       setError(location?.state?.error);
     }
-  }, [authenticated, from, location?.state?.error, navigate]);
+  }, [authenticated, from, location?.state?.error]);
 
   return (
     <main className="w-full max-w-md mx-auto p-6">
