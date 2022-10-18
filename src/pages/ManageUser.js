@@ -43,7 +43,6 @@ const ManageUser = () => {
 
   const showHideModal = () => {
     const modal = modalRef.current;
-    // if esc clicked close modal
 
     if (modal.classList.contains("hidden")) {
       modal.classList.remove("hidden");

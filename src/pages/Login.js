@@ -40,7 +40,11 @@ const Login = () => {
         setError("");
       })
       .catch((error) => {
-        setError(error.response?.data?.messages?.error ? error.response.data.messages.error : "Server error");
+        setError(
+          error.response?.data?.messages?.error
+            ? error.response.data.messages.error
+            : "Server error"
+        );
       });
   };
 
@@ -49,6 +53,7 @@ const Login = () => {
       setAuthenticated(true);
       setError("");
       setTimeout(() => {
+        window.location.reload();
         navigate(from || "/", { replace: true });
       }, 1000);
     } else {

@@ -47,7 +47,7 @@ const Navigation = () => {
   return (
     <nav
       ref={nav}
-      className={`sticky top-0 p-5 py-0 md:px-14 flex md:items-center md:justify-between ${
+      className={`sticky top-0 p-5 py-0 md:px-14 flex items-center justify-between ${
         location?.pathname !== "/"
           ? "bg-white shadow-sm"
           : "bg-transparent text-white transition ease-in duration-500"
@@ -63,7 +63,27 @@ const Navigation = () => {
         </Link>
       </div>
 
-      <ul className="flex items-center font-medium">
+      <div className="md:hidden">
+        <button
+          className="flex items-center px-3 py-2 border-2 rounded text-gray-500 border-gray-600 hover:text-gray-400 hover:border-x-gray-400"
+          onClick={() => {}}
+        >
+          <svg
+            className="fill-current h-3 w-3"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path
+              fillRule="evenodd"
+              d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <ul className="items-center font-medium hidden md:flex">
         {Links.map((link, index) => (
           <li key={index} className="mr-10">
             <Link

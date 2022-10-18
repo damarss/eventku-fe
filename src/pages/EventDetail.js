@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { axiosAuth } from "../api/axios";
-import Navigation from "../components/Navigation";
 
 const EventDetail = () => {
   const location = useLocation();
@@ -14,17 +13,13 @@ const EventDetail = () => {
   };
 
   useEffect(() => {
-    if (location.state.id) {
-      getEvent(location.state.id);
+    if (location?.state?.id) {
+      getEvent(location?.state?.id);
     } else {
-      navigate("/");
+      navigate("/events");
     }
-  }, [location.state.id, navigate]);
-  return <>
-    {
-      event && event.title
-    }
-  </>;
+  }, [location?.state?.id, navigate]);
+  return <>{event && event.title}</>;
 };
 
 export default EventDetail;

@@ -4,14 +4,13 @@ const Hero = () => {
   return (
     <section className="hero -mt-20">
       <div className="hero-filter">
-        <div className="pt-24 mx-28 grid md:grid-cols-12 md:items-center">
-          <div className="md:col-span-7 sm:col-span-2">
+        <div className="pt-24 mx-5 md:mx-28 grid md:grid-cols-12 md:items-center">
+          <div className="col-span-12 md:col-span-7">
             <img src="/images/hero-image.png" alt="banner" />
           </div>
-          <div className="md:col-span-5 sm:col-span-2 text-white h-1/2">
+          <div className="col-span-12 md:col-span-5 text-white h-1/2 md:w-11/12">
             <h1 className="font-bold text-2xl">
-              Cari Event yang Ada Di Indonesia <br />
-              Dengan Mudah di Eventku
+              Cari Event yang Ada Di Indonesia Dengan Mudah di Eventku
             </h1>
             <p className="mt-7">
               Jangan sampai ketinggalan! Cari event favoritmu di website ini dan

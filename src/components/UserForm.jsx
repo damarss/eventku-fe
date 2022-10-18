@@ -45,6 +45,7 @@ const UserForm = (props) => {
     setEmail(props.user.email);
     setName(props.user.name);
     setRole(props.user.role);
+    setPassword("");
     setId(props.user.id);
   }, [props.user]);
 
