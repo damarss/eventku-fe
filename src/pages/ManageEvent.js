@@ -1,26 +1,74 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { CgCloseO } from "react-icons/cg";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { axiosAuth } from "../api/axios";
+import AddButton from "../components/AddButton";
+import EventForm from "../components/EventForm";
 import useAuthenticated from "../hooks/useAuthenticated";
 
 const ManageEvent = () => {
   const authenticated = useAuthenticated();
   const [events, setEvents] = useState([]);
+  const modalRef = useRef(null);
+  const [isAddForm, setIsAddForm] = useState(false);
+  const [isEditForm, setIsEditForm] = useState(false);
+  const [eventSelected, setEventSelected] = useState({});
 
   const getEvents = async () => {
     const res = await axiosAuth.get("/event");
-    console.log(res.data);
     setEvents(res.data.events);
+  };
+
+  const showHideModal = () => {
+    const modal = modalRef.current;
+    if (modal.classList.contains("hidden")) {
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    } else {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "auto";
+      setIsAddForm(false);
+      setIsEditForm(false);
+    }
   };
 
   useEffect(() => {
     getEvents();
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        showHideModal();
+      }
+    });
   }, []);
 
   return (
     <div className="min-h-screen mx-auto my-5 px-4">
       <h1 className="text-center font-bold text-4xl mt-4">Manage Event</h1>
-      <div className="overflow-x-auto relative mt-4">
+      <div
+        ref={modalRef}
+        className="w-full h-full bg-gray-500 bg-opacity-50 fixed top-0 left-0 z-20 hidden overflow-auto"
+      >
+        <div id="modal" className="w-11/12 md:w-1/2 mx-auto relative">
+          <button
+            onClick={showHideModal}
+            className="text-blue-500 absolute right-0 p-3 bg-blue-100 rounded-tr-md rounded-bl-md"
+          >
+            <CgCloseO className="text-3xl" />
+          </button>
+          {isAddForm && <EventForm title="Add" />}
+          {isEditForm && <EventForm event={eventSelected} title="Edit" />}
+        </div>
+      </div>
+      <AddButton
+        styling="mt-4 ml-auto"
+        text="Add Event"
+        action={() => {
+          setIsAddForm(true);
+          showHideModal();
+        }}
+      />
+      <div className="overflow-x-auto relative">
         <table className="table-auto mx-auto w-full text-sm text-left mt-4">
           <thead className="text-xs text-gray-700 uppercase bg-gray-100">
             <tr>
@@ -55,7 +103,14 @@ const ManageEvent = () => {
                   <td className="py-3 px-6">{event.price}</td>
                   <td className="py-3 px-6">{event.organizer}</td>
                   <td className="py-3 px-6">
-                    <button className="mx-2 my-1 ml-0 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <button
+                      onClick={() => {
+                        setIsEditForm(true);
+                        setEventSelected(event);
+                        showHideModal();
+                      }}
+                      className="mx-2 my-1 ml-0 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    >
                       <FaEdit />
                     </button>
                     <button className="my-1 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">

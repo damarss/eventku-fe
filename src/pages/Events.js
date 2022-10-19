@@ -27,7 +27,9 @@ const Events = () => {
                 key={event.id}
                 id={event.id}
                 title={event.title}
-                description={event.description}
+                description={`${event.description.slice(0, 70)}${
+                  event.description.length > 70 ? "..." : ""
+                }`}
                 image={`http://localhost:8080/uploads/images/${event.image_url}`}
                 start={event.start}
               />

@@ -14,8 +14,8 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
-      <h1>Profile</h1>
+    <div className="min-h-screen mt-4">
+      <h1 className="text-4xl font-bold text-center">Profile</h1>
       {user && (
         <div>
           <p>{user.name}</p>

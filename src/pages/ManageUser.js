@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { CgCloseO } from "react-icons/cg";
 import UserForm from "../components/UserForm";
-import Swal from "sweetalert2";
 
 const cookies = new Cookies();
 
@@ -73,12 +72,12 @@ const ManageUser = () => {
       {userSelected && (
         <div
           ref={modalRef}
-          className="w-full h-full bg-gray-500 bg-opacity-50 fixed top-0 left-0 z-20 hidden"
+          className="w-full h-full bg-gray-500 bg-opacity-50 fixed top-0 left-0 z-20 flex items-center hidden"
         >
-          <div id="modal" className="w-11/12 md:w-1/2 mx-auto relative top-2">
+          <div id="modal" className="w-11/12 md:w-1/2 mx-auto relative">
             <button
               onClick={showHideModal}
-              className="text-blue-500 absolute right-0 p-3 bg-blue-100 rounded-tr-md rounded-bl-md"
+              className="text-blue-500 absolute top-5 right-0 p-3 bg-blue-100 rounded-tr-md rounded-bl-md"
             >
               <CgCloseO className="text-3xl" />
             </button>
