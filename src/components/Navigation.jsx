@@ -50,7 +50,7 @@ const Navigation = () => {
       className={`sticky top-0 p-5 py-0 md:px-14 flex items-center justify-between ${
         location?.pathname !== "/"
           ? "bg-white shadow-sm"
-          : "bg-transparent text-white transition ease-in duration-500"
+          : "bg-transparent shadow-sm text-white transition ease-in duration-500"
       } z-10`}
     >
       <div>
