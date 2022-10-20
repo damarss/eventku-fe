@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { CgCloseO } from "react-icons/cg";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 import { axiosAuth } from "../api/axios";
 import AddButton from "../components/AddButton";
 import EventForm from "../components/EventForm";
 import useAuthenticated from "../hooks/useAuthenticated";
+
+const cookies = new Cookies();
 
 const ManageEvent = () => {
   const authenticated = useAuthenticated();
@@ -13,6 +17,8 @@ const ManageEvent = () => {
   const [isAddForm, setIsAddForm] = useState(false);
   const [isEditForm, setIsEditForm] = useState(false);
   const [eventSelected, setEventSelected] = useState({});
+  const Swal = require("sweetalert2");
+  const navigate = useNavigate();
 
   const getEvents = async () => {
     const res = await axiosAuth.get("/event");
@@ -32,7 +38,33 @@ const ManageEvent = () => {
     }
   };
 
+  const deleteEvent = async (id) => {
+    const confirmation = await Swal.fire({
+      title: "Delete Confirmation!",
+      text: "Do you want to delete event?",
+      icon: "warning",
+      showConfirmButton: true,
+      showCancelButton: true,
+    });
+
+    if (confirmation.isConfirmed) {
+      const res = await axiosAuth.delete(`/event/${id}`);
+      await Swal.fire({
+        title: "Success!",
+        text: res.data.message,
+        icon: "success",
+      });
+      getEvents();
+    }
+  };
+
   useEffect(() => {
+    const isAdmin = cookies.get("user")?.role === "admin";
+    if (isAdmin) {
+      getEvents();
+    } else {
+      navigate("/", { replace: true });
+    }
     getEvents();
 
     document.addEventListener("keydown", (e) => {
@@ -40,7 +72,11 @@ const ManageEvent = () => {
         showHideModal();
       }
     });
-  }, []);
+
+    if (isEditForm || isAddForm) {
+      // update data
+    }
+  }, [isAddForm, isEditForm, navigate]);
 
   return (
     <div className="min-h-screen mx-auto my-5 px-4">
@@ -56,8 +92,14 @@ const ManageEvent = () => {
           >
             <CgCloseO className="text-3xl" />
           </button>
-          {isAddForm && <EventForm title="Add" />}
-          {isEditForm && <EventForm event={eventSelected} title="Edit" />}
+          {isAddForm && <EventForm title="Add" showHideModal={showHideModal} />}
+          {isEditForm && (
+            <EventForm
+              event={eventSelected}
+              showHideModal={showHideModal}
+              title="Edit"
+            />
+          )}
         </div>
       </div>
       <AddButton
@@ -68,7 +110,7 @@ const ManageEvent = () => {
           showHideModal();
         }}
       />
-      <div className="overflow-x-auto relative">
+      <div className="overflow-x-auto ">
         <table className="table-auto mx-auto w-full text-sm text-left mt-4">
           <thead className="text-xs text-gray-700 uppercase bg-gray-100">
             <tr>
@@ -113,7 +155,10 @@ const ManageEvent = () => {
                     >
                       <FaEdit />
                     </button>
-                    <button className="my-1 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    <button
+                      onClick={() => deleteEvent(event.id)}
+                      className="my-1 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    >
                       <FaTrash />
                     </button>
                   </td>

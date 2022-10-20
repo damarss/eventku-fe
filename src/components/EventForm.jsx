@@ -10,17 +10,7 @@ const EventForm = (props) => {
   const [price, setPrice] = useState("");
   const [organizer, setOrganizer] = useState("");
   const [image, setImage] = useState(null);
-
-  // const imageHandler = (e) => {
-  //   const reader = new FileReader();
-  //   reader.onload = () => {
-  //     if (reader.readyState === 2) {
-  //       setImage(reader.result);
-  //       console.log(reader.result);
-  //     }
-  //   };
-  //   reader.readAsDataURL(e.target.files[0]);
-  // };
+  const Swal = require("sweetalert2");
 
   const emptyForm = () => {
     setTitle("");
@@ -35,41 +25,75 @@ const EventForm = (props) => {
 
   const addAction = async (e) => {
     e.preventDefault();
-    let data = new FormData();
-    data.append("title", title);
-    data.append("description", description);
-    data.append("start", start);
-    data.append("end", end);
-    data.append("venue", venue);
-    data.append("price", price);
-    data.append("organizer", organizer);
-    data.append("image", image);
 
-    const res = await axiosAuth.post("/event", data, {
-      headers: {
-        "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
-      },
+    const confirmation = await Swal.fire({
+      title: "Add Confirmation!",
+      text: "Do you want to add event?",
+      icon: "warning",
+      showConfirmButton: true,
+      showCancelButton: true,
     });
-    window.location.reload();
+
+    if (confirmation.isConfirmed) {
+      let data = new FormData();
+      data.append("title", title);
+      data.append("description", description);
+      data.append("start", start);
+      data.append("end", end);
+      data.append("venue", venue);
+      data.append("price", price);
+      data.append("organizer", organizer);
+      data.append("image", image);
+
+      const res = await axiosAuth.post("/event", data, {
+        headers: {
+          "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
+        },
+      });
+      await Swal.fire({
+        title: "Success!",
+        text: "Event has been added!",
+        icon: "success",
+      });
+      emptyForm();
+      props.showHideModal();
+    }
   };
 
   const editAction = async (e) => {
     e.preventDefault();
-    let data = new FormData();
-    data.append("title", title);
-    data.append("description", description);
-    data.append("start", start);
-    data.append("end", end);
-    data.append("venue", venue);
-    data.append("price", price);
-    data.append("organizer", organizer);
-    data.append("image", image);
-
-    const res = await axiosAuth.post(`/event/${props.event.id}`, data, {
-      headers: {
-        "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
-      },
+    const confirmation = await Swal.fire({
+      title: "Edit Confirmation!",
+      text: "Do you want to edit event?",
+      icon: "warning",
+      showConfirmButton: true,
+      showCancelButton: true,
     });
+
+    if (confirmation.isConfirmed) {
+      let data = new FormData();
+      data.append("title", title);
+      data.append("description", description);
+      data.append("start", start);
+      data.append("end", end);
+      data.append("venue", venue);
+      data.append("price", price);
+      data.append("organizer", organizer);
+      data.append("image", image);
+
+      const res = await axiosAuth.post(`/event/${props.event.id}`, data, {
+        headers: {
+          "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
+        },
+      });
+      await Swal.fire({
+        title: "Success!",
+        text: "Event has been updated!",
+        icon: "success",
+      });
+      emptyForm();
+      props.showHideModal();
+    }
   };
 
   useEffect(() => {
@@ -161,7 +185,7 @@ const EventForm = (props) => {
               onChange={(e) => {
                 setStart(e.target.value);
               }}
-              placeholder="Input start"
+              placeholder="Input start date"
               required
             />
           </div>
@@ -178,7 +202,7 @@ const EventForm = (props) => {
               onChange={(e) => {
                 setEnd(e.target.value);
               }}
-              placeholder="Input start"
+              placeholder="Input end date"
               required
             />
           </div>
@@ -195,7 +219,7 @@ const EventForm = (props) => {
               onChange={(e) => {
                 setVenue(e.target.value);
               }}
-              placeholder="Input start"
+              placeholder="Input venue"
               required
             />
           </div>
@@ -212,7 +236,7 @@ const EventForm = (props) => {
               onChange={(e) => {
                 setPrice(e.target.value);
               }}
-              placeholder="Input start"
+              placeholder="Input price"
               required
             />
           </div>
@@ -229,7 +253,7 @@ const EventForm = (props) => {
               onChange={(e) => {
                 setOrganizer(e.target.value);
               }}
-              placeholder="Input start"
+              placeholder="Input organizer"
               required
             />
           </div>

@@ -17,7 +17,7 @@ const Events = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen mb-12">
       <h1 className="font-bold text-center text-4xl mt-4">Events</h1>
       <div className="flex my-7 px-7 gap-7 flex-wrap mx-auto justify-center">
         {authenticated ? (

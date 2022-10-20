@@ -78,7 +78,11 @@ const ProfileCard = () => {
         className="hidden bg-white text-center py-3 w-44 absolute top-8 border-2 shadow-sm rounded-lg border-[#0A075F] -right-7"
         ref={dropdownMenu}
       >
-        <li className="mb-1 w-full hover:bg-red-50">
+        <li
+          className={`${
+            user?.role === "admin" && "mb-1"
+          } w-full hover:bg-red-50`}
+        >
           <Link
             onClick={scrollToTop}
             className="hover:bg-gray-50 block text-left px-3 text-gray-900"
@@ -109,7 +113,7 @@ const ProfileCard = () => {
             </li>
           </>
         )}
-        <li className="mb-1 w-full hover:bg-red-50">
+        <li className="w-full hover:bg-red-50">
           <Link
             className="hover:bg-gray-50 block text-left px-3 text-gray-900"
             to="#"

@@ -36,10 +36,7 @@ const Footer = () => {
             <h3 className="text-xl font-bold">Events</h3>
             <ul className="mt-4">
               <li className="mb-2">
-                <Link
-                  className="hover:text-cyan-500 duration-500"
-                  to="/contact"
-                >
+                <Link className="hover:text-cyan-500 duration-500" to="#">
                   Ajukan Event
                 </Link>
               </li>

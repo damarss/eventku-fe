@@ -64,7 +64,7 @@ const ManageUser = () => {
         showHideModal();
       }
     });
-  }, [navigate]);
+  }, [navigate, showHideModal]);
 
   return (
     <div className="min-h-screen mx-auto my-5 px-4">
@@ -81,11 +81,11 @@ const ManageUser = () => {
             >
               <CgCloseO className="text-3xl" />
             </button>
-            <UserForm user={userSelected} />
+            <UserForm showHideModal={showHideModal} user={userSelected} />
           </div>
         </div>
       )}
-      <div className="overflow-x-auto relative mt-4">
+      <div className="overflow-x-auto mt-4">
         <table className="table-auto mx-auto w-full text-sm text-left mt-4">
           <thead className="text-xs text-gray-700 uppercase bg-gray-100">
             <tr>

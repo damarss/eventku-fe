@@ -26,13 +26,19 @@ const UserForm = (props) => {
         email: email,
         name: name,
         role: role,
+        password: password,
       });
       axiosAuth
         .put(`/user/${id}`, data, {
           headers: { "Content-type": "application/json" },
         })
-        .then(() => {
-          window.location.reload();
+        .then((res) => {
+          Swal.fire({
+            title: "Success!",
+            text: "User has been updated!",
+            icon: "success",
+          });
+          props.showHideModal();
         })
         .catch((err) => {
           console.log(err);
@@ -69,7 +75,7 @@ const UserForm = (props) => {
               type="text"
               id="username"
               name="username"
-              className="py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:outline-blue-500"
+              className="py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:outline-blue-500 cursor-not-allowed"
               value={username}
               onChange={(e) => {
                 setUsername(e.target.value);
