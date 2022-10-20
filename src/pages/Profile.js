@@ -31,12 +31,14 @@ const Profile = () => {
     });
 
     if (confirmation.isConfirmed) {
-      const data = JSON.stringify({
+      const data = {
         username: username,
-        password: password,
         email: email,
         name: name,
-      });
+      };
+      if (password) {
+        data.password = password;
+      }
       const id = cookies.get("user")?.uid;
       const res = await axiosAuth.put(`user/${id}`, data, {
         headers: { "Content-type": "application/json" },
@@ -98,10 +100,10 @@ const Profile = () => {
                 type="text"
                 id="email"
                 name="email"
-                className="py-3 px-4 block w-full outline-2 outline-blue-200 rounded-md text-sm focus:outline-indigo-700"
+                className={`py-3 px-4 block w-full outline-2 outline-blue-200 rounded-md text-sm focus:outline-indigo-700 ${user.username === "admin" && "cursor-not-allowed"}`}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                disabled={user.role === "admin" ? true : false}
+                disabled={user.username === "admin" ? true : false}
                 placeholder="email@example.com"
                 required
               />
@@ -117,10 +119,10 @@ const Profile = () => {
                 type="text"
                 id="name"
                 name="name"
-                className="py-3 px-4 block w-full outline-2 outline-blue-200 rounded-md text-sm focus:outline-indigo-700"
+                className={`py-3 px-4 block w-full outline-2 outline-blue-200 rounded-md text-sm focus:outline-indigo-700 ${user.username === "admin" && "cursor-not-allowed"}`}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                disabled={user.role === "admin" ? true : false}
+                disabled={user.username === "admin" ? true : false}
                 placeholder="name@example.com"
                 required
               />

@@ -36,8 +36,10 @@ const Events = () => {
             onChange={(e) => getEvents(e.target.value)}
             className="bg-blue-50 border-none cursor-pointer text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           >
+            <option selected value="start">
+              Sort By Start Date
+            </option>
             <option value="title">Sort By Title</option>
-            <option value="start">Sort By Start Date</option>
             <option value="price">Sort By Price</option>
           </select>
         </div>

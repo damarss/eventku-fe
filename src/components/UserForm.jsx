@@ -22,14 +22,17 @@ const UserForm = (props) => {
     });
 
     if (confirmation.isConfirmed) {
-      const data = JSON.stringify({
+      const data = {
+        username: username,
         email: email,
         name: name,
         role: role,
-        password: password,
-      });
+      };
+      if (password) {
+        data.password = password;
+      }
       axiosAuth
-        .put(`/user/${id}`, data, {
+        .put(`/user/${id}`, JSON.stringify(data), {
           headers: { "Content-type": "application/json" },
         })
         .then((res) => {
