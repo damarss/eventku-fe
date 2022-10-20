@@ -2,8 +2,12 @@ import { FaFacebookF, FaHeart, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+
   return (
-    <footer className="bg-[#0A075F] text-white px-3 md:px-12 pt-14 pb-8">
+    <footer className="bg-[#0A075F] text-white px-3 md:px-12 pt-14 pb-6">
       <div className="grid  md:grid-cols-12 sm:grid-cols-4 gap-4">
         <div className="col-span-4">
           <div className="-mt-2">
@@ -59,22 +63,35 @@ const Footer = () => {
             <h3 className="text-xl font-bold">Company</h3>
             <ul className="mt-4">
               <li className="mb-2">
-                <Link className="hover:text-cyan-500 duration-500" to="/">
+                <Link
+                  onClick={scrollToTop}
+                  className="hover:text-cyan-500 duration-500"
+                  to="/"
+                >
                   Home
                 </Link>
               </li>
               <li className="mb-2">
-                <Link className="hover:text-cyan-500 duration-500" to="/events">
+                <Link
+                  onClick={scrollToTop}
+                  className="hover:text-cyan-500 duration-500"
+                  to="/events"
+                >
                   Events
                 </Link>
               </li>
               <li className="mb-2">
-                <Link className="hover:text-cyan-500 duration-500" to="/about">
+                <Link
+                  onClick={scrollToTop}
+                  className="hover:text-cyan-500 duration-500"
+                  to="/about"
+                >
                   About
                 </Link>
               </li>
               <li className="mb-2">
                 <Link
+                  onClick={scrollToTop}
                   className="hover:text-cyan-500 duration-500"
                   to="/contact"
                 >
@@ -115,12 +132,22 @@ const Footer = () => {
             </span>{" "}
             by{" "}
             <a
-              className="text-cyan-500"
+              className="text-cyan-300 hover:text-cyan-500"
               href="https://github.com/damarss"
               target="_blank"
               rel="noreferrer"
             >
               Damar Septia Nugraha
+            </a>
+            {" | "}
+            Design inspired by{" "}
+            <a
+              href="https://www.figma.com/community/file/1090519574420411612"
+              className="text-cyan-300 hover:text-cyan-500"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Avi Yansah
             </a>
           </p>
         </div>

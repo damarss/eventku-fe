@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="hero -mt-20">
+    <section className="hero relative -top-28 md:-top-20">
       <div className="hero-filter">
         <div className="pt-24 mx-5 md:mx-28 grid md:grid-cols-12 md:items-center">
           <div className="col-span-12 md:col-span-7">

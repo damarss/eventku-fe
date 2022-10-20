@@ -1,7 +1,7 @@
 const Sponsor = () => {
   return (
     <section className="flex flex-col mb-28 px-4 items-center">
-      <h1 className="font-bold text-3xl">Gabung menjadi sponsor kami</h1>
+      <h1 className="font-bold text-3xl text-center">Gabung menjadi sponsor kami</h1>
       <p className="mt-4 md:w-6/12 text-center text-sm">
         Kami dengan senang hati menerima kerja sama dengan pihak lain. Di bawah
         ini hanya sebagian dari sponsor kami

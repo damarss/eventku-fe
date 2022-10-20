@@ -1,6 +1,12 @@
+import { Link } from "react-router-dom";
+
 const BannerCreate = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+
   return (
-    <section className="grid grid-cols-12 my-10 mt-44 mb-32 px-4 md:px-32 bg-[#EEE1FF] md:h-52 justify-center items-center">
+    <section className="grid grid-cols-12 my-10 mt-32 mb-32 px-4 md:px-32 bg-[#EEE1FF] md:h-52 justify-center items-center">
       <div className="col-span-12 md:col-span-6 mt-1">
         <img
           src="/images/consultant.jpg"
@@ -14,12 +20,16 @@ const BannerCreate = () => {
             Buat Event Anda Sendiri
           </h1>
           <p className="mt-2">
-            Anda dapat mengajukan event anda sendiri dengan mengisi form dibawah
-            ini
+            Anda dapat mengajukan event anda sendiri dengan menghubungi kami
+            melalui contact dibawah ini
           </p>
-          <button className="bg-[#F5167E] hover:bg-[#c63176] hover:shadow-xl text-white px-10 text-sm py-3 rounded-full mt-4 shadow-md">
+          <Link
+            className="bg-[#F5167E] hover:bg-[#c63176] hover:shadow-xl text-white px-10 text-sm py-3 rounded-full mt-4 shadow-md"
+            to="/contact"
+            onClick={scrollToTop}
+          >
             Ajukan Event
-          </button>
+          </Link>
         </div>
       </div>
     </section>
