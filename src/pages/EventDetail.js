@@ -34,6 +34,7 @@ const EventDetail = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (location?.state?.id) {
       getEvent(location?.state?.id);
       const startDate = new Date(event?.start);
@@ -95,7 +96,7 @@ const EventDetail = () => {
                 <hr className="opacity-50 mt-3" />
                 <h2 className="mt-3 font-bold text-xl">IDR</h2>
                 <p className="font-semibold text-2xl">
-                  {event?.price ? formatter.format(event?.price) : "Gratis"}
+                  {event?.price > 0 ? formatter.format(event?.price) : "Gratis"}
                 </p>
                 <hr className="opacity-50 mt-3 mb-3" />
                 <h2 className="font-bold text-3xl mb-3">

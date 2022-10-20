@@ -10,7 +10,8 @@ body {
     background: url(components/hero.jpg) no-repeat center center/cover;
 }
 
-.hero, .hero-filter {
+.hero,
+.hero-filter {
     height: 720px;
 }
 

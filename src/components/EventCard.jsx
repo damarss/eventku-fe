@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import EVentDescription from "./EventDescription";
+import Price from "./Price";
 import Tanggal from "./Tanggal";
 
 const EventCard = (props) => {
@@ -8,9 +9,11 @@ const EventCard = (props) => {
     navigate("/event", { state: { id: id } });
   };
 
-  const { id, title, description, start, image } = props;
+  const { id, title, description, start, image, price } = props;
   const date = new Date(start);
-  let newBulan = date.toLocaleString("default", { month: "short" }).toUpperCase();
+  let newBulan = date
+    .toLocaleString("default", { month: "short" })
+    .toUpperCase();
   let newTanggal = date.getDate();
 
   return (
@@ -22,7 +25,10 @@ const EventCard = (props) => {
         <img className="h-full w-full object-cover" src={image} alt={title} />
       </div>
       <div className="bg-white px-3 py-4 flex gap-4">
-        <Tanggal bulan={newBulan} tanggal={newTanggal} />
+        <div className="flex flex-col gap-3">
+          <Price price={price} />
+          <Tanggal bulan={newBulan} tanggal={newTanggal} />
+        </div>
         <EVentDescription title={title} description={description} />
       </div>
     </div>
