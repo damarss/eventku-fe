@@ -133,7 +133,7 @@ const ManageEvent = () => {
                   <td className="py-3 px-6">{index + 1}</td>
                   <td className="py-3 px-6">
                     <img
-                      src={`http://localhost:8080/uploads/images/${event.image_url}`}
+                      src={`http://eventku-id.my.id/uploads/images/${event.image_url}`}
                       alt={event.title}
                     />
                   </td>
