@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
 
-const BASE_URL = "https://222011829.student.stis.ac.id/";
+const BASE_URL = "https://eventku-id.my.id/";
 const cookies = new Cookies();
 
 export default axios.create({
