@@ -62,7 +62,7 @@ const EventDetail = () => {
         <div className="mt-4 grid grid-cols-9 gap-5 mx-4 md:mx-36 p-4 py-6">
           <div className="col-span-9 md:col-span-6">
             <img
-              src={`http://localhost:8080/uploads/images/${event?.image_url}`}
+              src={`http://eventku-id.my.id/uploads/images/${event?.image_url}`}
               alt="event?.title"
               className="w-full rounded-md"
             />
