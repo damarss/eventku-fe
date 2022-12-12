@@ -53,7 +53,7 @@ const Events = () => {
                 description={`${event.description.slice(0, 160)}${
                   event.description.length > 160 ? "..." : ""
                 }`}
-                image={`http://localhost:8080/uploads/images/${event.image_url}`}
+                image={`https://eventku-id.my.id/uploads/images/${event.image_url}`}
                 start={event.start}
                 price={event.price}
               />
